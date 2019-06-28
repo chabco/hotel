@@ -13,7 +13,7 @@ hotel = {
    '237': ['Jack Torrance', 'Wendy Torrance'],
  },
  '3': {
-   '333': ['Neo', 'Trinity', Morpheus']
+   '333': ['Neo', 'Trinity', 'Morpheus']
  }
 }
 ```
