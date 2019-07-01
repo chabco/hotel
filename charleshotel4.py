@@ -12,7 +12,7 @@ hotel = {
 
 # Write a program that works with this hotel data:
 
-# Display a menu asking whether to check in or check out.
+### Display a menu asking whether to check in or check out.
 # Prompt the user for a floor number, then a room number.
 # If checking in, ask for the number of occupants and what their names are.
 # If checking out, remove the occupants from that room.
@@ -21,20 +21,39 @@ hotel = {
 
 
 def visitorStatus():
-    stayingNow = True
-    while stayingNow:
-        askGuest = input('Hello, will you check in or check out?: ')
-        if askGuest.lower() == 'check out':
-            print('Thank you for staying with us. Please provide your information to check out.')
-            return False
-            stayingNow = False
-        elif askGuest.lower() == 'check in':
-            print('Welcome! Let\'s get your information to check in!')
-            return True
-            stayingNow = False
+	stayingNow = True
+	while stayingNow:
+		askGuest = input('Hello, will you check in or check out?: ')
+		if askGuest.lower() == 'check out':
+			print('Thank you for staying with us. Please provide your information to check out.')
+			return False
+			stayingNow = False
+		elif askGuest.lower() == 'check in':
+			print('Welcome! Let\'s get your information to check in!')
+			return True
+			stayingNow = False
+		else:
+			print('Sorry, I didn\'t get that.')
+			continue
+
+def checkOut():
+    askFloor = input('Which floor are you staying on?')
+    if int(askFloor) != ['1', '2', '3']:
+        askRoom = input('...And which room?')
+        if hotel.get(askFloor) and hotel.get(askFloor).get(askRoom) != None:
+            del hotel[askFloor][askRoom]
+            print(hotel)
+            print('Goodbye.')
+			if int(askRoom) != ['101', '237', '333']:
+				print('That room is empty.')
+			else:
+				print('That room is occupied!')
         else:
-            print('Sorry, I didn\'t get that.')
-            continue
+            print('You are not in our books...*awkward pause*')
+    else:
+        print('We only have three floors...')
 
-
-visitorStatus()
+def checkIn():
+	howMany = input('How many guests will be staying with us?: ')
+	if int(howMany) > 1:
+		name = input('Please provide the names: ')
