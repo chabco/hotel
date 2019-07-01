@@ -26,10 +26,12 @@ def visitorStatus():
 		askGuest = input('Hello, will you check in or check out?: ')
 		if askGuest.lower() == 'check out':
 			print('Thank you for staying with us. Please provide your information to check out.')
+			checkOut()
 			return False
 			stayingNow = False
 		elif askGuest.lower() == 'check in':
 			print('Welcome! Let\'s get your information to check in!')
+			checkIn()
 			return True
 			stayingNow = False
 		else:
@@ -44,16 +46,17 @@ def checkOut():
             del hotel[askFloor][askRoom]
             print(hotel)
             print('Goodbye.')
-			if int(askRoom) != ['101', '237', '333']:
-				print('That room is empty.')
-			else:
-				print('That room is occupied!')
         else:
             print('You are not in our books...*awkward pause*')
     else:
         print('We only have three floors...')
 
 def checkIn():
+	guestAmount = 0
+	guestList = []
 	howMany = input('How many guests will be staying with us?: ')
-	if int(howMany) > 1:
-		name = input('Please provide the names: ')
+	while int(howMany) > 1:
+		name = input('Please provide the names of guests: ')
+		guestList.append(name)
+		guestAmount += 1
+	print(guestList)
